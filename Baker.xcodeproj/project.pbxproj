@@ -19,6 +19,9 @@
 		BF43CBFE1517F9CE008B2C8B /* ios-icon-ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF43CBFA1517F9CE008B2C8B /* ios-icon-ipad@2x.png */; };
 		BF43CBFF1517F9CE008B2C8B /* ios-icon-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = BF43CBFB1517F9CE008B2C8B /* ios-icon-iphone.png */; };
 		BF43CC001517F9CE008B2C8B /* ios-icon-iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF43CBFC1517F9CE008B2C8B /* ios-icon-iphone@2x.png */; };
+		CDA4A78A15E1F97200FB87EC /* libCocoaHTTPServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA4A78915E1F97200FB87EC /* libCocoaHTTPServer.a */; };
+		CDA4A79715E1FB7900FB87EC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA4A79615E1FB7900FB87EC /* CFNetwork.framework */; };
+		CDA4A79915E1FB7F00FB87EC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA4A79815E1FB7F00FB87EC /* Security.framework */; };
 		D20915C413CB9FDC00D3B55B /* PropertiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D20915C313CB9FDC00D3B55B /* PropertiesTest.m */; };
 		D21A0B86135CF1F2005D6E8A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D21A0B85135CF1F2005D6E8A /* libOCMock.a */; };
 		D268D29B15A253A000108A0E /* BakerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D268D29A15A253A000108A0E /* BakerAppDelegate.m */; };
@@ -80,6 +83,11 @@
 		BF43CBFA1517F9CE008B2C8B /* ios-icon-ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-icon-ipad@2x.png"; sourceTree = "<group>"; };
 		BF43CBFB1517F9CE008B2C8B /* ios-icon-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-icon-iphone.png"; sourceTree = "<group>"; };
 		BF43CBFC1517F9CE008B2C8B /* ios-icon-iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-icon-iphone@2x.png"; sourceTree = "<group>"; };
+		CDA4A5D715E1F90200FB87EC /* CocoaHTTPServer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaHTTPServer.xcodeproj; path = Lib/CocoaHTTPServer.xcodeproj; sourceTree = "<group>"; };
+		CDA4A5E015E1F90200FB87EC /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.markdown; path = Lib/README.markdown; sourceTree = "<group>"; };
+		CDA4A78915E1F97200FB87EC /* libCocoaHTTPServer.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libCocoaHTTPServer.a; path = "Baker/lib/CocoaHTTPServer/Lib/build/Release-iphoneos/libCocoaHTTPServer.a"; sourceTree = "<group>"; };
+		CDA4A79615E1FB7900FB87EC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		CDA4A79815E1FB7F00FB87EC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D20915C213CB9FDC00D3B55B /* PropertiesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertiesTest.h; sourceTree = "<group>"; };
 		D20915C313CB9FDC00D3B55B /* PropertiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertiesTest.m; sourceTree = "<group>"; };
 		D21A0B85135CF1F2005D6E8A /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
@@ -133,11 +141,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDA4A79915E1FB7F00FB87EC /* Security.framework in Frameworks */,
+				CDA4A79715E1FB7900FB87EC /* CFNetwork.framework in Frameworks */,
 				578A4F2114B1AF570054CD50 /* MessageUI.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				9F242EDA11FB344D00641757 /* QuartzCore.framework in Frameworks */,
+				CDA4A78A15E1F97200FB87EC /* libCocoaHTTPServer.a in Frameworks */,
 				9F6E6B6012AAA1BE0019EFB6 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,8 +191,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				D268D29C15A2549E00108A0E /* Baker */,
 				BF2F993F1269379900E356EF /* book */,
+				D268D29C15A2549E00108A0E /* Baker */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				D281CE9B13545C0E009F1B11 /* Tests */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -214,12 +225,15 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CDA4A79815E1FB7F00FB87EC /* Security.framework */,
+				CDA4A79615E1FB7900FB87EC /* CFNetwork.framework */,
 				578A4F2014B1AF570054CD50 /* MessageUI.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				9F242ED911FB344D00641757 /* QuartzCore.framework */,
 				9F6E6B5F12AAA1BE0019EFB6 /* libz.dylib */,
+				CDA4A78915E1F97200FB87EC /* libCocoaHTTPServer.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -235,9 +249,19 @@
 			path = icon;
 			sourceTree = "<group>";
 		};
+		CDA4A5A115E1F90200FB87EC /* CocoaHTTPServer */ = {
+			isa = PBXGroup;
+			children = (
+				CDA4A5E015E1F90200FB87EC /* README.markdown */,
+				CDA4A5D715E1F90200FB87EC /* CocoaHTTPServer.xcodeproj */,
+			);
+			path = CocoaHTTPServer;
+			sourceTree = "<group>";
+		};
 		D268D29C15A2549E00108A0E /* Baker */ = {
 			isa = PBXGroup;
 			children = (
+				D268D2AA15A2549E00108A0E /* lib */,
 				D268D29D15A2549E00108A0E /* BakerViewController.h */,
 				D268D29E15A2549E00108A0E /* BakerViewController.m */,
 				D268D29F15A2549E00108A0E /* Downloader.h */,
@@ -247,7 +271,6 @@
 				D268D2A715A2549E00108A0E /* IndexViewController.m */,
 				D268D2A815A2549E00108A0E /* InterceptorWindow.h */,
 				D268D2A915A2549E00108A0E /* InterceptorWindow.m */,
-				D268D2AA15A2549E00108A0E /* lib */,
 				D268D2BF15A2549E00108A0E /* ModalViewController.h */,
 				D268D2C015A2549E00108A0E /* ModalViewController.m */,
 				D268D2C115A2549E00108A0E /* Properties.h */,
@@ -271,6 +294,7 @@
 		D268D2AA15A2549E00108A0E /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				CDA4A5A115E1F90200FB87EC /* CocoaHTTPServer */,
 				D268D2AB15A2549E00108A0E /* GTMDefines.h */,
 				D268D2AC15A2549E00108A0E /* GTMNSString+HTML.h */,
 				D268D2AD15A2549E00108A0E /* GTMNSString+HTML.m */,
@@ -499,6 +523,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Baker_Prefix.pch;
+				HEADER_SEARCH_PATHS = "Baker/lib/CocoaHTTPServer/**";
 				INFOPLIST_FILE = "Baker-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "";
@@ -519,6 +544,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Baker_Prefix.pch;
+				HEADER_SEARCH_PATHS = "Baker/lib/CocoaHTTPServer/**";
 				INFOPLIST_FILE = "Baker-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "";
@@ -557,6 +583,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Baker_Prefix.pch;
+				HEADER_SEARCH_PATHS = "Baker/lib/CocoaHTTPServer/**";
 				INFOPLIST_FILE = "Baker-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "";

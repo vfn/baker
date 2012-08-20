@@ -1,0 +1,3 @@
+[submodule "Baker/lib/CocoaHTTPServer"]
+	path = Baker/lib/CocoaHTTPServer
+	url = git@github.com:vfn/CocoaHTTPServer.git
