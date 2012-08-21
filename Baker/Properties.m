@@ -152,19 +152,28 @@
      *   [[json objectForKey:@"items"] objectAtIndex:1]
      */
     
-    NSDictionary *ret = nil;
+    NSDictionary *dictionary = nil;
     
-    if (filePath) {  
-        NSString *fileJSON = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    if (filePath) {
+		NSData *JSONData = [NSData dataWithContentsOfFile:filePath];
         
-        NSError *e = nil;
-        ret = [fileJSON objectFromJSONStringWithParseOptions:JKParseOptionNone error:&e];
+		NSError *e = nil;
+        // iOS >= 5.0
+		if (NSClassFromString(@"NSJSONSerialization")) {
+			id JSONSerialization = NSClassFromString(@"NSJSONSerialization");
+			dictionary = [JSONSerialization JSONObjectWithData:JSONData
+														 options:NSJSONReadingAllowFragments
+														   error:&e];
+		} else {
+			dictionary = [JSONData objectFromJSONDataWithParseOptions:JKParseOptionNone
+																error:&e];
+		}
         if ([e userInfo] != nil) {
             NSLog(@"Error loading JSON: %@", [e userInfo]);
         }
     }
     
-    return ret;
+    return dictionary;
 }
 
 #pragma mark - SINGLETON METHODS
