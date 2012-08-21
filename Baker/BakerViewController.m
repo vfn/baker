@@ -104,7 +104,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     if (self) {
         NSLog(@"• INIT");
 		
-		[self initHTTPServer];
+		[self initHTTPServerWithBookPath:bookPath
+								 bookURL:bookURL];
         
         
         // ****** INIT PROPERTIES
@@ -197,7 +198,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     return self;
 }
 
-- (void)initHTTPServer {
+- (void)initHTTPServerWithBookPath:(NSString *)bookPath bookURL:(NSURL *)bookURL {
 	// Configure our logging framework.
 	// To keep things simple and fast, we're just going to log to the Xcode console.
 	[DDLog addLogger:[DDTTYLogger sharedInstance]];
@@ -207,17 +208,16 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 	
 	// Tell the server to broadcast its presence via Bonjour.
 	// This allows browsers such as Safari to automatically discover our service.
-	[_httpServer setType:@"_http._tcp."];
+	//[_httpServer setType:@"_http._tcp."];
 	
 	// Normally there's no need to run our server on any specific port.
 	// Technologies like Bonjour allow clients to dynamically discover the server's port at runtime.
 	// However, for easy testing you may want force a certain port so you can just hit the refresh button.
-	[_httpServer setPort:12345];
+	[_httpServer setPort:[[bookURL port] intValue]];
 	
 	// Serve files from our embedded Web folder
-	NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"book"];
-	NSLog(@"Setting document root: %@", webPath);
-	
+	NSString *webPath = bookPath;
+	DDLogInfo(@"Setting document root: %@", webPath);
 	[_httpServer setDocumentRoot:webPath];
 	
 	// Start the server (and check for problems)
