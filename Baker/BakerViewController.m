@@ -1042,8 +1042,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
 		NSString *filename = [[NSFileManager defaultManager] displayNameAtPath:path];
-        NSLog(@"• Loading: book/%@", filename);
-		NSURL *fileURL = [currentBookURL URLByAppendingPathComponent:[filename stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+		NSURL *fileURL = [currentBookURL URLByAppendingPathComponent:filename];
+        NSLog(@"• Loading: %@", fileURL);
 		NSAssert(fileURL != nil, @"fileURL is invalid");
         [webView loadRequest:[NSURLRequest requestWithURL:fileURL]];
         return YES;
