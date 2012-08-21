@@ -45,6 +45,7 @@
     
     
     NSString *currentBookPath;
+	NSURL *currentBookURL;
     NSString *bundleBookPath;
     NSString *documentsBookPath;
     NSString *defaultScreeshotsPath;
@@ -113,7 +114,10 @@
 
 #pragma mark - INIT
 - (id)initWithBookPath:(NSString *)bookPath;
-- (BOOL)loadBookWithBookPath:(NSString *)bookPath;
+- (id)initWithBookPath:(NSString *)bookPath
+			   bookURL:(NSURL *)bookURL;
+- (BOOL)loadBookWithBookPath:(NSString *)bookPath
+					 bookURL:(NSURL *)bookURL;
 - (void)cleanupBookEnvironment;
 - (void)resetPageSlots;
 - (void)resetPageDetails;

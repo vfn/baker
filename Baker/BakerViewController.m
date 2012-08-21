@@ -94,6 +94,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 #pragma mark - INIT
 - (id)initWithBookPath:(NSString *)bookPath {
+	return [self initWithBookPath:bookPath
+						  bookURL:[NSURL fileURLWithPath:bookPath]];
+}
+
+- (id)initWithBookPath:(NSString *)bookPath
+			   bookURL:(NSURL *)bookURL {
     self = [super init];
     if (self) {
         NSLog(@"• INIT");
@@ -185,7 +191,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         
         
         // TODO: LOAD BOOK METHOD IN VIEW DID LOAD
-        [self loadBookWithBookPath:bookPath];
+        [self loadBookWithBookPath:bookPath bookURL:bookURL];
         [self startReading];
     }
     return self;
@@ -227,12 +233,14 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 	}
 }
 
-- (BOOL)loadBookWithBookPath:(NSString *)bookPath {
-    NSLog(@"• LOAD BOOK WITH PATH: %@", bookPath);
+- (BOOL)loadBookWithBookPath:(NSString *)bookPath
+					 bookURL:(NSURL *)bookURL {
+    NSLog(@"• LOAD BOOK WITH:\nPATH: %@\nURL: %@", bookPath, bookURL);
     
     
     // ****** STORING BOOK PATH
-    currentBookPath = [bookPath retain];
+    currentBookPath = [bookPath copy];
+	currentBookURL = [bookURL retain];
     
     
     // ****** CLEANUP PREVIOUS BOOK
@@ -1033,8 +1041,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     NSString *path = [NSString stringWithString:[pages objectAtIndex:page - 1]];
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        NSLog(@"• Loading: book/%@", [[NSFileManager defaultManager] displayNameAtPath:path]);
-        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
+		NSString *filename = [[NSFileManager defaultManager] displayNameAtPath:path];
+        NSLog(@"• Loading: book/%@", filename);
+		NSURL *fileURL = [currentBookURL URLByAppendingPathComponent:[filename stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+		NSAssert(fileURL != nil, @"fileURL is invalid");
+        [webView loadRequest:[NSURLRequest requestWithURL:fileURL]];
         return YES;
     }
     return NO;
@@ -1977,6 +1988,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     [documentsBookPath release];
     [currentBookPath release];
+	[currentBookURL release]; currentBookURL = nil;
     
     [pageDetails release];
     [toLoad release];
