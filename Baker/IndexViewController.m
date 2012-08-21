@@ -206,7 +206,7 @@
     NSLog(@"Path to index view is %@", path);
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
         disabled = NO;
-        [(UIWebView *)self.view loadRequest:[NSURLRequest requestWithURL:[self indexURL]]];
+        [(UIWebView *)self.view loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
     } else {
         NSLog(@"Could not find index view at that path");
         disabled = YES;
@@ -269,13 +269,6 @@
 
 - (NSString *)indexPath {
     return [bookPath stringByAppendingPathComponent:fileName];
-}
-
-- (NSURL *)indexURL {
-	NSURL *baseURL = [NSURL URLWithString:@"http://localhost:12345"];
-	NSURL *indexURL = [baseURL URLByAppendingPathComponent:fileName];
-	NSAssert(indexURL != nil, @"indexURL is nil");
-	return indexURL;
 }
 
 /*

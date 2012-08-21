@@ -72,6 +72,5 @@
 - (void)setActualSize;
 - (void)setViewFrame:(CGRect)frame;
 - (NSString *)indexPath;
-- (NSURL *)indexURL;
 
 @end
