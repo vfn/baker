@@ -53,6 +53,23 @@
 		D281D06E13549F08009F1B11 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F242ED911FB344D00641757 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CDA4A7BF15E3398100FB87EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDA4A5D715E1F90200FB87EC /* CocoaHTTPServer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD1EAE7F15DE218000AA2DD6;
+			remoteInfo = CocoaHTTPServer;
+		};
+		CDA4A7C115E3398100FB87EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDA4A5D715E1F90200FB87EC /* CocoaHTTPServer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD1EAE9015DE218000AA2DD6;
+			remoteInfo = CocoaHTTPServerTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		D2700BDA1356041800889DD8 /* Copy OCMock */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -85,7 +102,7 @@
 		BF43CBFC1517F9CE008B2C8B /* ios-icon-iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios-icon-iphone@2x.png"; sourceTree = "<group>"; };
 		CDA4A5D715E1F90200FB87EC /* CocoaHTTPServer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaHTTPServer.xcodeproj; path = Lib/CocoaHTTPServer.xcodeproj; sourceTree = "<group>"; };
 		CDA4A5E015E1F90200FB87EC /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.markdown; path = Lib/README.markdown; sourceTree = "<group>"; };
-		CDA4A78915E1F97200FB87EC /* libCocoaHTTPServer.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libCocoaHTTPServer.a; path = "Baker/lib/CocoaHTTPServer/Lib/build/Release-iphoneos/libCocoaHTTPServer.a"; sourceTree = "<group>"; };
+		CDA4A78915E1F97200FB87EC /* libCocoaHTTPServer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaHTTPServer.a; path = "Baker/lib/CocoaHTTPServer/Lib/build/Release-iphoneos/libCocoaHTTPServer.a"; sourceTree = "<group>"; };
 		CDA4A79615E1FB7900FB87EC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CDA4A79815E1FB7F00FB87EC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D20915C213CB9FDC00D3B55B /* PropertiesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertiesTest.h; sourceTree = "<group>"; };
@@ -258,6 +275,15 @@
 			path = CocoaHTTPServer;
 			sourceTree = "<group>";
 		};
+		CDA4A7BB15E3398100FB87EC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CDA4A7C015E3398100FB87EC /* libCocoaHTTPServer.a */,
+				CDA4A7C215E3398100FB87EC /* CocoaHTTPServerTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D268D29C15A2549E00108A0E /* Baker */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,6 +449,12 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CDA4A7BB15E3398100FB87EC /* Products */;
+					ProjectRef = CDA4A5D715E1F90200FB87EC /* CocoaHTTPServer.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* Baker */,
@@ -430,6 +462,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CDA4A7C015E3398100FB87EC /* libCocoaHTTPServer.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCocoaHTTPServer.a;
+			remoteRef = CDA4A7BF15E3398100FB87EC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CDA4A7C215E3398100FB87EC /* CocoaHTTPServerTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CocoaHTTPServerTests.octest;
+			remoteRef = CDA4A7C115E3398100FB87EC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
